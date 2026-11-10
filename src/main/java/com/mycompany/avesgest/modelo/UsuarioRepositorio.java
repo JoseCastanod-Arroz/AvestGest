@@ -53,4 +53,21 @@ public interface UsuarioRepositorio {
      *         credencial o el usuario era invalido
      */
     boolean guardar(Usuario usuario);
+
+    /**
+     * Devuelve todos los usuarios registrados (paso "desplegar lista de
+     * usuarios" del diagrama de asignacion de rol).
+     *
+     * @return lista de usuarios
+     */
+    java.util.List<Usuario> listar();
+
+    /**
+     * Actualiza el rol de un usuario (paso "actualizar rol en base de datos").
+     *
+     * @param credencial identificador del usuario
+     * @param rol nuevo rol a asignar
+     * @return true si el usuario existia y se actualizo
+     */
+    boolean actualizarRol(String credencial, String rol);
 }

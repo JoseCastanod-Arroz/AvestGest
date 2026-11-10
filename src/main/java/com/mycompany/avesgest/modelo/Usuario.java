@@ -17,6 +17,7 @@ public class Usuario {
     private String nombre;
     private String apellido;
     private String correo;
+    private String rol;
 
     public Usuario() {
     }
@@ -83,5 +84,13 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

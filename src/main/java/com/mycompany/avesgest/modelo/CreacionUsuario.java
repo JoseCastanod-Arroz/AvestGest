@@ -71,11 +71,18 @@ public class CreacionUsuario {
         Usuario usuario = new Usuario(id, correo, contrasenia,
                 nombre, null, correo);
         if (rep.guardar(usuario)) {
-            msj.mostrar("Usuario creado correctamente. ID: " + id);
+            mostrarDatos();
             return true;
         }
         msj.mostrarError("No se pudo crear el usuario: el correo ya esta registrado");
         return false;
+    }
+
+    public void mostrarDatos() {
+        msj.mostrar("Usuario creado correctamente.\n"
+                + "ID: " + id + "\n"
+                + "Nombre: " + nombre + "\n"
+                + "Correo: " + correo);
     }
 
     private boolean estaVacio(String valor) {

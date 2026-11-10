@@ -66,4 +66,19 @@ public class UsuarioRepositorioMemoria implements UsuarioRepositorio {
         usuarios.add(usuario);
         return true;
     }
+
+    @Override
+    public List<Usuario> listar() {
+        return new ArrayList<>(usuarios);
+    }
+
+    @Override
+    public boolean actualizarRol(String credencial, String rol) {
+        Usuario usuario = buscarPorCredencial(credencial);
+        if (usuario == null) {
+            return false;
+        }
+        usuario.setRol(rol);
+        return true;
+    }
 }
