@@ -4,8 +4,7 @@
 
 package com.mycompany.avesgest;
 
-import com.mycompany.avesgest.controlador.InicioSesionController;
-import com.mycompany.avesgest.modelo.InicioSesion;
+import com.mycompany.avesgest.controlador.AsignacionRolController;
 
 /**
  *
@@ -14,6 +13,6 @@ import com.mycompany.avesgest.modelo.InicioSesion;
 public class AvesGest {
 
     public static void main(String[] args) {
-        InicioSesionController ctr = new InicioSesionController();
+        AsignacionRolController ctr = new AsignacionRolController();
     }
 }
