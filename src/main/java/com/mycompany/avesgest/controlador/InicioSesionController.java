@@ -4,6 +4,7 @@
  */
 package com.mycompany.avesgest.controlador;
 
+import com.mycompany.avesgest.modelo.InicioSesion;
 import com.mycompany.avesgest.vista.InicioSesion.FormInicioSesion;
 import com.mycompany.avesgest.vista.InicioSesion.PnlInicioSesionContrasenia;
 import com.mycompany.avesgest.vista.InicioSesion.PnlInicioSesionCredencial;
@@ -17,9 +18,13 @@ public class InicioSesionController {
     private final FormInicioSesion vista;
     private final PnlInicioSesionCredencial pnlcredencial;
     private final PnlInicioSesionContrasenia pnlcontrasenia;
+    private InicioSesion iniSes;
+    private boolean bandera;
 
     public InicioSesionController()
     {
+        bandera = false;
+        iniSes = new InicioSesion();
         vista = new FormInicioSesion();
         pnlcredencial = new PnlInicioSesionCredencial();
         pnlcontrasenia = new PnlInicioSesionContrasenia();
@@ -28,9 +33,11 @@ public class InicioSesionController {
 
     public void Iniciar()
     {
+        
         vista.setVisible(true);
         IngresarCredencial();
-        pnlcredencial.getBtnSiguienteCredencial().addActionListener(e -> IngresarContrasenia());
+        pnlcredencial.getBtnSiguienteCredencial().addActionListener(e -> validarCredencial());
+        pnlcontrasenia.getBtnSiguienteContrasenia().addActionListener(e -> validarContrasenia());
     }
 
     private void IngresarCredencial(){
@@ -46,7 +53,23 @@ public class InicioSesionController {
         vista.getPanelContenido().add(pnlcontrasenia);
         vista.getPanelContenido().revalidate();
         vista.getPanelContenido().repaint();
-        
+    }
+    
+    private void validarCredencial(){
+        String credencial = pnlcredencial.getTxtCredencial().getText();
+        iniSes.setCredencial(credencial);
+        if(!iniSes.validarCredencial()){
+            return;
+        }
+        IngresarContrasenia();
+    }
+    
+    private void validarContrasenia(){
+        String contrasenia = pnlcontrasenia.getTxtContrasenia().getText();
+        iniSes.setContrasenia(contrasenia);
+        if(!iniSes.validarContrasenia()){
+            return ;
+        }
     }
 
     
