@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
 public class Mensaje {
     
     public void mostrar(String mensaje){
-        JOptionPane.showConfirmDialog(this, mensaje);
+        JOptionPane.showMessageDialog(null, mensaje);
     }
 
     public void mostrarError(String mensaje){
-        JOptionPane.showConfirmDialog(this, mensaje);
+          JOptionPane.showMessageDialog(null, mensaje, "Error", JOptionPane.ERROR_MESSAGE);
     }
 }

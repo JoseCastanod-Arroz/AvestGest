@@ -12,6 +12,14 @@ public class InicioSesion {
     
     private String credencial;
     private String contrasenia;
+    private UsuarioRepositorio rep;
+    private Mensaje msj;
+    
+    public InicioSesion()
+    {
+        rep = new UsuarioRepositorioMemoria();
+        msj = new Mensaje();
+    }
 
     public String getCredencial() {
         return credencial;
@@ -27,6 +35,23 @@ public class InicioSesion {
 
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
+    }
+    
+    public boolean validarCredencial(){
+        if(rep.validarCredencial(credencial)){
+            return true;
+        }
+        msj.mostrar("Usuario no encontrado, Cree Usuario nuevo");
+        return false;
+    }
+    
+    public boolean validarContrasenia(){
+        if(rep.validar(credencial, contrasenia)){
+            msj.mostrar("Credenciales Correctas, Bienvenido");
+            return true;
+        }
+        msj.mostrarError("Error, Contraseña no valida");
+        return false;
     }
     
     
