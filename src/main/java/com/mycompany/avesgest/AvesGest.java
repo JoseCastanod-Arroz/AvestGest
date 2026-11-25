@@ -4,7 +4,7 @@
 
 package com.mycompany.avesgest;
 
-import com.mycompany.avesgest.controlador.AsignacionRolController;
+import com.mycompany.avesgest.controlador.InventarioController;
 
 /**
  *
@@ -13,6 +13,9 @@ import com.mycompany.avesgest.controlador.AsignacionRolController;
 public class AvesGest {
 
     public static void main(String[] args) {
-        AsignacionRolController ctr = new AsignacionRolController();
+        // Modulo 2 - Gestion de Inventario.
+        // Se abre con un administrador para habilitar todas las operaciones
+        // (configurar nivel minimo y editar insumo son exclusivas de ese rol).
+        InventarioController ctr = new InventarioController("admin", "Administrador");
     }
 }
