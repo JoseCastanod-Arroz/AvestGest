@@ -4,18 +4,25 @@
 
 package com.mycompany.avesgest;
 
-import com.mycompany.avesgest.controlador.InventarioController;
+import com.mycompany.avesgest.controlador.MenuPrincipalController;
+import javax.swing.SwingUtilities;
 
 /**
+ * Punto de entrada del sistema.
+ *
+ * Abre la ventana inicial, desde la que el usuario entra a la gestion de
+ * inventario o a la gestion de ventas.
  *
  * @author krate
  */
 public class AvesGest {
 
     public static void main(String[] args) {
-        // Modulo 2 - Gestion de Inventario.
-        // Se abre con un administrador para habilitar todas las operaciones
-        // (configurar nivel minimo y editar insumo son exclusivas de ese rol).
-        InventarioController ctr = new InventarioController("admin", "Administrador");
+        // La interfaz se construye en el event dispatch thread de Swing.
+        // La sesion de prueba arranca como administrador para habilitar todas
+        // las operaciones de cada modulo (anular venta, nivel minimo y edicion
+        // de insumo son exclusivas de ese rol).
+        SwingUtilities.invokeLater(
+                () -> new MenuPrincipalController("admin", "Administrador"));
     }
 }
