@@ -9,7 +9,7 @@ import com.mycompany.avesgest.modelo.ConsultaStock;
 import com.mycompany.avesgest.modelo.EdicionInsumo;
 import com.mycompany.avesgest.modelo.Insumo;
 import com.mycompany.avesgest.modelo.InventarioRepositorio;
-import com.mycompany.avesgest.modelo.InventarioRepositorioMemoria;
+import com.mycompany.avesgest.modelo.InventarioRepositorioSQL;
 import com.mycompany.avesgest.modelo.MotivoSalida;
 import com.mycompany.avesgest.modelo.RegistroEntrada;
 import com.mycompany.avesgest.modelo.RegistroSalida;
@@ -60,7 +60,7 @@ public class InventarioController {
      * @param rolUsuario    rol del usuario: "Administrador" u otro (operario)
      */
     public InventarioController(String usuarioActivo, String rolUsuario) {
-        this.rep = new InventarioRepositorioMemoria();
+        this.rep = new InventarioRepositorioSQL();
         this.usuarioActivo = usuarioActivo;
         this.rolUsuario = rolUsuario;
         this.vista = new FormInventario();
